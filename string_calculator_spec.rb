@@ -49,4 +49,11 @@ describe "Add" do
       expect { Add("-1,2,-3,-4") }.to raise_error(RuntimeError, "negative numbers not allowed: -1, -3, -4")
     end
   end
+
+  describe "with numbers larger than a thousand" do
+    it "sums all numbers lower than a thousand" do
+      expect(Add("1,1005,2,1000")).to eql(3)
+    end
+  end
+
 end

@@ -56,4 +56,9 @@ describe "Add" do
     end
   end
 
+  describe "with multiple character delimiters" do
+    it "sums all numbers successfully" do
+      expect(Add("//[***]\n1***2***3")).to eql(6)
+    end
+  end
 end

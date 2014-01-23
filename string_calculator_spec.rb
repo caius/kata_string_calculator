@@ -21,4 +21,17 @@ describe "Add" do
       expect(Add("2,5")).to eql(7)
     end
   end
+
+  [
+    ["three", "5,7,10", 22],
+    ["seven", "1,2,129,39,29,1,4", 205],
+    ["twenty", "1,2,3,41,2,12,54,4,6,35,6,23,12,32,2,22,5,53,9,29", 353],
+  ].each do |(number, list, expected)|
+    describe "with #{number} numbers" do
+      it "returns the sum of all numbers" do
+        expect(Add(list)).to eql(expected)
+      end
+    end
+  end
+
 end

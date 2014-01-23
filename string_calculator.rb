@@ -1,7 +1,15 @@
 def Add(input)
-  input.match(%r{(?:\A//(.)\n)?(.+)\z}m) do |match|
+  numbers = input.match(%r{(?:\A//(.)\n)?(.+)\z}m) do |match|
     _, delim, str = match.to_a
     delim ||= /(?:,|\n)/
-    str.split(delim).map(&:to_i).inject(:+)
-  end || 0
+    str.split(delim).map(&:to_i)
+  end
+
+  return 0 unless numbers
+
+  if (( negatives = numbers.reject {|i| i.abs == i } )).any?
+    raise "negative numbers not allowed: #{negatives.join(", ")}"
+  end
+
+  numbers.inject(:+)
 end

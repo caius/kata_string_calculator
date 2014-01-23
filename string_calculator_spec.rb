@@ -37,4 +37,16 @@ describe "Add" do
       expect(Add("//;\n1;2")).to eql(3)
     end
   end
+
+  describe "with single negative number" do
+    it "throws an error containing that number" do
+      expect { Add("1,2,-3,4") }.to raise_error(RuntimeError, "negative numbers not allowed: -3")
+    end
+  end
+
+  describe "with multiple negative numbers" do
+    it "throws an error containing all those numbers" do
+      expect { Add("-1,2,-3,-4") }.to raise_error(RuntimeError, "negative numbers not allowed: -1, -3, -4")
+    end
+  end
 end

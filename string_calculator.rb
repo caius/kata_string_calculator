@@ -1,6 +1,7 @@
 def Add(input)
-  numbers = input.match(%r{(?:\A//(.)\n)?(.+)\z}m) do |match|
+  numbers = input.match(%r{\A(?:\/\/(.|\[.+\])\n)?(.+)\z}m) do |match|
     _, delim, str = match.to_a
+    delim = delim[1..-2] if delim && delim[/\[.+\]/]
     delim ||= /(?:,|\n)/
     str.split(delim).map(&:to_i)
   end

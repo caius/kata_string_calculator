@@ -31,4 +31,10 @@ describe "Add" do
       expect(Add("1\n2")).to eql(3)
     end
   end
+
+  describe "with arbitrary delimited numbers" do
+    it "returns the sum of the numbers" do
+      expect(Add("//;\n1;2")).to eql(3)
+    end
+  end
 end

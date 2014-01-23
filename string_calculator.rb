@@ -11,5 +11,5 @@ def Add(input)
     raise "negative numbers not allowed: #{negatives.join(", ")}"
   end
 
-  numbers.inject(:+)
+  numbers.reject {|i| i >= 1000 }.inject(:+)
 end
